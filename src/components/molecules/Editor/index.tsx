@@ -43,7 +43,7 @@ interface Props {
 }
 
 const SidebarEditor = ({
-  text = 'In this editor a toolbar shows up once you select part of the text …',
+  text = 'Loading...',
   onChange,
   buttonOptions,
   editable = true

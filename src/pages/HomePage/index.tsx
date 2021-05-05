@@ -26,7 +26,7 @@ const HomePage = ({pages, id, name, publish, loadPage}: Props): JSX.Element => {
     loadPage(id)
   }, [])
   const CMSPageId = `${id}_${name}`
-  const pageContent = pages[CMSPageId].serverContent
+  const pageContent = pages[CMSPageId]?.serverContent
 
   return (
     <>
@@ -46,7 +46,7 @@ const HomePage = ({pages, id, name, publish, loadPage}: Props): JSX.Element => {
           }}
         /> */}
         <CMSRichTextField
-          content={pageContent.body[0].value}
+          content={pageContent?.body[0].value}
           bifrostOptions={{
             pageId: '3',
             pageName: 'HomePage',
@@ -57,7 +57,7 @@ const HomePage = ({pages, id, name, publish, loadPage}: Props): JSX.Element => {
           }}
         />
         <CMSTextField
-          content={pageContent.body[1].value}
+          content={pageContent?.body[1].value}
           bifrostOptions={{
             pageId: '3',
             pageName: 'HomePage',
@@ -68,7 +68,7 @@ const HomePage = ({pages, id, name, publish, loadPage}: Props): JSX.Element => {
           }}
         />
         <CMSTextField
-          content={pageContent.body[2].value}
+          content={pageContent?.body[2].value}
           bifrostOptions={{
             pageId: '3',
             pageName: 'HomePage',
