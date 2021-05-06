@@ -2,27 +2,30 @@
 // import TextField from '@components/atoms/editable/TextField'
 // import SidebarEditor from '@components/molecules/Editor'
 // import {DropAPI} from '@API'
+// import {MDBBtn} from 'mdb-react-ui-kit'
+//
 import {useEffect} from 'react'
+
+import {CMSRichTextField} from '@cms/containers/CMSRichTextField'
+import {CMSTextField} from '@cms/containers/CMSTextField'
 
 import {Navbar} from '@components/organisms'
 import Footer from '@components/organisms/Footer'
 
-import {CMSRichTextField} from '@containers/CMSRichTextField'
-import {CMSTextField} from '@containers/CMSTextField'
-
 import {RootState} from '@store/store'
 
-type CMSState = RootState['cms']
+//
 
-interface Props extends CMSState {
-  publish: () => void
+interface Props {
   loadPage: (id: string) => void
   id: string
   name: string
+  pages: RootState['cms']['pages']
 }
 
-const HomePage = ({pages, id, name, publish, loadPage}: Props): JSX.Element => {
+const HomePage = ({pages, id, name, loadPage}: Props): JSX.Element => {
   useEffect(() => {
+    console.log('reload')
     loadPage(id)
   }, [])
   const CMSPageId = `${id}_${name}`
@@ -48,8 +51,8 @@ const HomePage = ({pages, id, name, publish, loadPage}: Props): JSX.Element => {
         <CMSRichTextField
           content={pageContent?.body[0].value}
           bifrostOptions={{
-            pageId: '3',
-            pageName: 'HomePage',
+            pageId: id,
+            pageName: name,
             fieldName: 'body',
             blockId: 1,
             blockPosition: 0,
@@ -59,8 +62,8 @@ const HomePage = ({pages, id, name, publish, loadPage}: Props): JSX.Element => {
         <CMSTextField
           content={pageContent?.body[1].value}
           bifrostOptions={{
-            pageId: '3',
-            pageName: 'HomePage',
+            pageId: id,
+            pageName: name,
             fieldName: 'body',
             blockId: 1,
             blockPosition: 1,
@@ -70,8 +73,8 @@ const HomePage = ({pages, id, name, publish, loadPage}: Props): JSX.Element => {
         <CMSTextField
           content={pageContent?.body[2].value}
           bifrostOptions={{
-            pageId: '3',
-            pageName: 'HomePage',
+            pageId: id,
+            pageName: name,
             fieldName: 'body',
             blockId: 2,
             blockPosition: 2,
@@ -87,7 +90,12 @@ const HomePage = ({pages, id, name, publish, loadPage}: Props): JSX.Element => {
         /> */}
       </div>
 
-      <button onClick={() => publish()}></button>
+      {/* <button
+        type="button"
+        className="btn btn-danger btn-floating btn-lg"
+        id="btn-back-to-top">
+        <i className="fas fa-arrow-up"></i>
+      </button> */}
 
       <Footer copyrightText={'snek'} copyrightUrl={'https://snek.at'} />
     </>

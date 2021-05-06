@@ -1,13 +1,44 @@
 import {DropAPI} from '@API'
 import {DropAPIReferences} from '@API'
-import {createAsyncThunk} from '@reduxjs/toolkit'
+import {createAction, createAsyncThunk} from '@reduxjs/toolkit'
 
 import {RootState} from '@store/store'
 
-import {CMSBlock, CMSField} from './cmsReducer'
+import {CMSBlock, CMSField} from './types'
 
 // import {EditableProps} from '@components/atoms/editable/types'
 
+export const toggleMenu = createAction<boolean>('cms/toggleMenu')
+export const setEditingMode = createAction<boolean>('cms/setEditingMode')
+
+export const loadIndex = createAsyncThunk(
+  'cms/loadIndex',
+  async (
+    args: {
+      checksum?: string
+    },
+    thunkAPI
+  ) => {
+    // const {updatePageDropFn, bifrostArgs} = args
+    const {checksum} = args
+
+    try {
+      const {data, errors} = await DropAPI.queries.doPagesIndexTreeQuery({
+        checksum: checksum || ''
+      })
+
+      if (!data || errors) {
+        throw new Error('DropAPI fetch failed')
+      }
+
+      return data.pagesIndexTree
+    } catch (err) {
+      // Use `err.response.data` as `action.payload` for a `rejected` action,
+      // by explicitly returning it using the `rejectWithValue()` utility
+      return thunkAPI.rejectWithValue(err.response.data)
+    }
+  }
+)
 export const loadPageContent = createAsyncThunk(
   'cms/loadPageContent',
   async (

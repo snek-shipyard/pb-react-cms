@@ -1,6 +1,5 @@
 @import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-@import 'draft-js/dist/Draft';
-@import '@draft-js-plugins/side-toolbar/lib/plugin.css';
+@import '@cms/cms.scss';
 
 .App {
   text-align: center;

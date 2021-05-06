@@ -2,6 +2,7 @@
     "compilerOptions": {
       "baseUrl": ".",
       "paths": {
+        "@cms/*": ["./src/cms/*"],
         "@components/*": ["./src/components/*"],
         "@containers/*": ["./src/containers/*"],
         "@common/*": ["./src/common/*"],

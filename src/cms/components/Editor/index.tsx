@@ -12,6 +12,7 @@ import {
   CodeBlockButton
 } from '@draft-js-plugins/buttons'
 import Editor, {createEditorStateWithText} from '@draft-js-plugins/editor'
+import createImagePlugin from '@draft-js-plugins/image'
 import createSideToolbarPlugin from '@draft-js-plugins/side-toolbar'
 import {EditorState} from 'draft-js'
 import {stateToHTML} from 'draft-js-export-html'
@@ -56,8 +57,9 @@ const SidebarEditor = ({
   //   }, [])
   const [{plugins, SideToolbar}] = useState(() => {
     const toolbarPlugin = createSideToolbarPlugin({position: 'right'})
+    const imagePlugin = createImagePlugin()
     const {SideToolbar} = toolbarPlugin
-    const plugins = [toolbarPlugin]
+    const plugins = [toolbarPlugin, imagePlugin]
     return {
       plugins,
       SideToolbar

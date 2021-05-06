@@ -9,6 +9,7 @@
   "arrowParens": "avoid",
   "jsxBracketSameLine": true,
   "importOrder": [
+    "^@cms/(.*)$",
     "^@common/(.*)$",
     "^@components/(.*)$",
     "^@containers/(.*)$",

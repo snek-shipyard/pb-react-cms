@@ -1,13 +1,13 @@
 import {connect} from 'react-redux'
 
-import EditableRichTextField from '@components/atoms/editable/RichTextField'
+import EditableRichTextField from '@cms/components/RichTextField'
+import {updatePageContent} from '@cms/store/cmsActions'
+import {CMSBlock} from '@cms/store/types'
 
-import {updatePageContent} from '@store/cms/cmsActions'
-import {CMSBlock} from '@store/cms/cmsReducer'
 import {AppDispatch, RootState} from '@store/store'
 
-const mapStateToProps = ({}: RootState) => ({
-  // active: !cms.isEditing
+const mapStateToProps = ({cms}: RootState) => ({
+  editable: cms.editingMode
 })
 
 const mapDispatchToProps = (dispatch: AppDispatch) => ({

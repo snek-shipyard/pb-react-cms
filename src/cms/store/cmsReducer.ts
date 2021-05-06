@@ -1,44 +1,19 @@
 import {createReducer} from '@reduxjs/toolkit'
 
 import {
+  setEditingMode,
   loadPageContent,
   publishPageContent,
-  updatePageContent
+  updatePageContent,
+  loadIndex,
+  toggleMenu
 } from './cmsActions'
-
-export type CMSField = {
-  type: 'FIELD'
-  pageId: string
-  pageName: string
-  fieldName: string
-  content: string
-}
-
-export type CMSBlock = {
-  type: 'BLOCK'
-  pageId: string
-  pageName: string
-  fieldName: string
-  blockType: string
-  blockPosition: number
-  blockId: number
-  content: string
-}
-
-// type CMSState = {
-//   fields: {
-//     [CMSPageId: string]: {
-//       [CMSFieldId: string]: CMSField
-//     }
-//   }
-//   blocks: {
-//     [CMSPageId: string]: {
-//       [CMSBlockId: string]: CMSBlock
-//     }
-//   }
-// }
+import {CMSMenuState, CMSBlock, CMSField} from './types'
 
 type CMSState = {
+  editingMode: boolean
+  showMenu: boolean
+  menu: CMSMenuState
   pages: {
     [CMSPageId: string]: {
       id: string
@@ -56,9 +31,24 @@ type CMSState = {
   }
 }
 
-const initialState: CMSState = {pages: {}}
+const initialState: CMSState = {
+  editingMode: false,
+  showMenu: false,
+  menu: {},
+  pages: {}
+}
 
 export const cmsReducer = createReducer(initialState, {
+  [toggleMenu.type]: (state, action) => void (state.showMenu = action.payload),
+  [setEditingMode.type]: (state, action) =>
+    void (state.editingMode = action.payload),
+  [loadIndex.fulfilled.type]: (state, action) => {
+    const {checksum, tree} = action.payload
+
+    console.log(JSON.stringify(state))
+
+    state.menu.index = {checksum, tree}
+  },
   [loadPageContent.fulfilled.toString()]: (state, action) => {
     const page = action.payload
     const CMSPageId = `${page.id}_${page.__typename}`

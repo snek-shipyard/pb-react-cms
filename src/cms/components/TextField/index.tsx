@@ -1,8 +1,7 @@
 import React from 'react'
 
-import SidebarEditor from '@components/molecules/Editor'
-
-import {CMSBlock, CMSField} from '@store/cms/cmsReducer'
+import SidebarEditor from '@cms/components/Editor'
+import {CMSBlock, CMSField} from '@cms/store/types'
 
 import {EditableProps} from '../types'
 
@@ -13,10 +12,11 @@ type SubelementProps = React.DetailedHTMLProps<
 interface Props extends SubelementProps, EditableProps {
   updateContent: (element: CMSField | CMSBlock) => void
   content?: string
+  editable?: boolean
 }
 
 const EditableTextField = ({updateContent, ...props}: Props) => {
-  const {bifrostOptions, content, ...subProps} = props
+  const {bifrostOptions, content, editable, ...subProps} = props
 
   const onUpdateContent = (content: string) => {
     // const block = JSON.stringify([
@@ -56,7 +56,11 @@ const EditableTextField = ({updateContent, ...props}: Props) => {
 
   return (
     <div {...subProps}>
-      <SidebarEditor onChange={onUpdateContent} text={content} />
+      <SidebarEditor
+        onChange={onUpdateContent}
+        text={content}
+        editable={editable}
+      />
     </div>
   )
 }
