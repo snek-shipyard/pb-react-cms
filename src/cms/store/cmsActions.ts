@@ -6,9 +6,8 @@ import {RootState} from '@store/store'
 
 import {CMSBlock, CMSField} from './types'
 
-// import {EditableProps} from '@components/atoms/editable/types'
-
 export const toggleMenu = createAction<boolean>('cms/toggleMenu')
+
 export const setEditingMode = createAction<boolean>('cms/setEditingMode')
 
 export const loadIndex = createAsyncThunk(
@@ -19,7 +18,6 @@ export const loadIndex = createAsyncThunk(
     },
     thunkAPI
   ) => {
-    // const {updatePageDropFn, bifrostArgs} = args
     const {checksum} = args
 
     try {
@@ -39,6 +37,7 @@ export const loadIndex = createAsyncThunk(
     }
   }
 )
+
 export const loadPageContent = createAsyncThunk(
   'cms/loadPageContent',
   async (
@@ -88,21 +87,8 @@ export const updatePageContent = createAsyncThunk(
 export const publishPageContent = createAsyncThunk<{}, {}, {state: RootState}>(
   'cms/publishPageContent',
   async (_, thunkAPI) => {
-    // const {updatePageDropFn, bifrostArgs} = args
     const {pages} = thunkAPI.getState().cms
     try {
-      // const {data, errors} = await updatePageDropFn(bifrostArgs)
-      // console.log(data, errors)
-      //   const {data, errors} = await DropAPI.queries.doPagesQuery({})
-      //   console.log(errors)
-      //   if (errors) {
-      //     throw new Error(
-      //       `Action fetchBifrostPages failed with ${JSON.stringify(errors)}`
-      //     )
-      //   }
-      //   return ''
-      // return convertPageListToTree(data ? data.pages : [])
-
       for (const [_key, page] of Object.entries(pages)) {
         const inputBlocks: {
           [fielName: string]: {type: string; value: string}[]
@@ -123,11 +109,6 @@ export const publishPageContent = createAsyncThunk<{}, {}, {state: RootState}>(
               type: block.blockType,
               value: block.content
             })
-
-            // inputBlocks[block.fieldName] = [
-            //   // ...(inputBlocks[block.fieldName] || []),
-            //   {type: block.blockType, value: block.content}
-            // ]
           }
         }
 
@@ -142,9 +123,6 @@ export const publishPageContent = createAsyncThunk<{}, {}, {state: RootState}>(
             inputFields[field.fieldName] = field.content
           }
         }
-        console.log(inputFields)
-        console.log(DropAPIReferences, `doUpdate${page.name}Mutation`)
-        console.log(DropAPIReferences[`doUpdate${page.name}Mutation`])
 
         await DropAPIReferences[`doUpdate${page.name}Mutation`]({
           id: page.id,
@@ -152,7 +130,6 @@ export const publishPageContent = createAsyncThunk<{}, {}, {state: RootState}>(
         })
       }
     } catch (err) {
-      console.log(err)
       // Use `err.response.data` as `action.payload` for a `rejected` action,
       // by explicitly returning it using the `rejectWithValue()` utility
       return thunkAPI.rejectWithValue(err.response.data)

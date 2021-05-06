@@ -87,8 +87,6 @@ const SidebarEditor = ({
   }, [text])
 
   const onValueChange = (value: EditorState): void => {
-    console.log('value change')
-
     if (buttonOptions) {
       onChange(stateToHTML(value.getCurrentContent()))
     } else {

@@ -1,12 +1,13 @@
-interface EditableProps {
-  bifrostOptions: {
+export type CMSComponentProps = {
+  content?: string
+  editableOptions: {
     pageId: string
     pageName: string
     fieldName: string
-    blockId?: number
-    blockPosition?: number
-    blockType?: string
+    block?: {
+      id: number
+      position: number
+      type: string
+    }
   }
 }
-
-export type {EditableProps}

@@ -40,8 +40,6 @@ const CMSMenu = ({
 }: Props) => {
   const toggleShow = () => toggleMenu(!showMenu)
 
-  console.log(editingMode, setEditingMode)
-
   useEffect(() => {
     setInterval(() => {
       loadIndex(index?.checksum)

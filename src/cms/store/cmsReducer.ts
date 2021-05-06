@@ -44,16 +44,11 @@ export const cmsReducer = createReducer(initialState, {
     void (state.editingMode = action.payload),
   [loadIndex.fulfilled.type]: (state, action) => {
     const {checksum, tree} = action.payload
-
-    console.log(JSON.stringify(state))
-
     state.menu.index = {checksum, tree}
   },
   [loadPageContent.fulfilled.toString()]: (state, action) => {
     const page = action.payload
     const CMSPageId = `${page.id}_${page.__typename}`
-
-    console.log(CMSPageId)
 
     if (!state.pages[CMSPageId]) {
       state.pages[CMSPageId] = {
@@ -65,7 +60,6 @@ export const cmsReducer = createReducer(initialState, {
     }
   },
   [updatePageContent.fulfilled.toString()]: (state, action) => {
-    console.log(state, action.payload)
     const element = action.payload
     const CMSPageId = `${element.pageId}_${element.pageName}`
 
@@ -83,13 +77,6 @@ export const cmsReducer = createReducer(initialState, {
           }
         }
       }
-      // state.fields = {
-      //   ...state.fields,
-      //   [CMSPageId]: {
-      //     // ...state.fields[CMSPageId],
-      //     [CMSId]: element
-      //   }
-      // }
     } else if (element.type === 'BLOCK') {
       const CMSId = `${element.pageId}_${element.fieldName}_${element.blockType}_${element.blockId}`
       state.pages[CMSPageId] = {
@@ -105,31 +92,7 @@ export const cmsReducer = createReducer(initialState, {
         }
       }
     }
-
-    //   state.blocks = {
-    //     ...state.blocks,
-    //     [CMSPageId]: {
-    //       ...state.blocks[CMSPageId],
-    //       [CMSId]: element
-    //     }
-    //   }
-    // }
-
-    // switch(action.payload.type){
-    //   case "BLOCK":
-    //     state.blocks = {}
-    // }
-    // if(action.payload.type === "BLOCK"){
-
-    // } else if(action.paload)
-
-    // const statePages = state.pages
-    // for (const [key, _value] of Object.entries(action.payload)) {
-    //   console.log(JSON.stringify(statePages[key]['test']))
-    // }
-    // state.pages = action.payload
   },
-  [publishPageContent.fulfilled.toString()]: (state, action) => {
-    console.log(state, action)
-  }
+  [publishPageContent.fulfilled.toString()]: (state, _action) =>
+    void (state.editingMode = false)
 })

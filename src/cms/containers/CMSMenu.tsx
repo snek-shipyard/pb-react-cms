@@ -21,7 +21,6 @@ const mapDispatchToProps = (dispatch: AppDispatch) => ({
   toggleMenu: (state: boolean) => dispatch(toggleMenu(state)),
   setEditingMode: (state: boolean) => dispatch(setEditingMode(state)),
   publish: () => dispatch(publishPageContent({}))
-  // loadPage: (id: string) => dispatch(loadPageContent({id}))
 })
 
 export const CMSMenuContainer = connect(

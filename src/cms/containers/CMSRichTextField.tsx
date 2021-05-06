@@ -12,7 +12,6 @@ const mapStateToProps = ({cms}: RootState) => ({
 
 const mapDispatchToProps = (dispatch: AppDispatch) => ({
   updateContent: (element: CMSBlock) => dispatch(updatePageContent({element}))
-  //   remove: () => dispatch(decrement)
 })
 
 export const CMSRichTextField = connect(

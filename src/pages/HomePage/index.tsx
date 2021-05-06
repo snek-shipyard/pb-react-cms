@@ -1,20 +1,10 @@
-// import RichTextField from '@components/atoms/editable/RichTextField'
-// import TextField from '@components/atoms/editable/TextField'
-// import SidebarEditor from '@components/molecules/Editor'
-// import {DropAPI} from '@API'
-// import {MDBBtn} from 'mdb-react-ui-kit'
-//
 import {useEffect} from 'react'
 
-import {CMSRichTextField} from '@cms/containers/CMSRichTextField'
-import {CMSTextField} from '@cms/containers/CMSTextField'
+import {CMSRichTextField, CMSTextField} from '@cms/editable'
 
-import {Navbar} from '@components/organisms'
-import Footer from '@components/organisms/Footer'
+import {Navbar, Footer} from '@components/organisms'
 
 import {RootState} from '@store/store'
-
-//
 
 interface Props {
   loadPage: (id: string) => void
@@ -25,7 +15,6 @@ interface Props {
 
 const HomePage = ({pages, id, name, loadPage}: Props): JSX.Element => {
   useEffect(() => {
-    console.log('reload')
     loadPage(id)
   }, [])
   const CMSPageId = `${id}_${name}`
@@ -35,67 +24,46 @@ const HomePage = ({pages, id, name, loadPage}: Props): JSX.Element => {
     <>
       <Navbar />
       <div style={{margin: 100}}>
-        {/* <TextField
-          bifrostOptions={{
-            pageName: 'StudiePage',
-            fieldName: 'veryCoolTestField'
-          }}
-        /> */}
-        {/* <RichTextField
-          bifrostOptions={{
-            pageName: 'HomePage',
-            fieldName: 'body',
-            blockTypeName: 'subheading'
-          }}
-        /> */}
         <CMSRichTextField
           content={pageContent?.body[0].value}
-          bifrostOptions={{
+          editableOptions={{
             pageId: id,
             pageName: name,
             fieldName: 'body',
-            blockId: 1,
-            blockPosition: 0,
-            blockType: 'subheading'
+            block: {
+              id: 1,
+              position: 0,
+              type: 'subheading'
+            }
           }}
         />
         <CMSTextField
           content={pageContent?.body[1].value}
-          bifrostOptions={{
+          editableOptions={{
             pageId: id,
             pageName: name,
             fieldName: 'body',
-            blockId: 1,
-            blockPosition: 1,
-            blockType: 'heading'
+            block: {
+              id: 1,
+              position: 1,
+              type: 'heading'
+            }
           }}
         />
         <CMSTextField
           content={pageContent?.body[2].value}
-          bifrostOptions={{
+          editableOptions={{
             pageId: id,
             pageName: name,
             fieldName: 'body',
-            blockId: 2,
-            blockPosition: 2,
-            blockType: 'heading'
+            block: {
+              id: 2,
+              position: 2,
+              type: 'heading'
+            }
           }}
         />
-        {/* <CMSTextField
-          bifrostOptions={{
-            pageId: '3',
-            pageName: 'HomePage',
-            fieldName: 'someotherfield'
-          }}
-        /> */}
       </div>
-
-      {/* <button
-        type="button"
-        className="btn btn-danger btn-floating btn-lg"
-        id="btn-back-to-top">
-        <i className="fas fa-arrow-up"></i>
-      </button> */}
 
       <Footer copyrightText={'snek'} copyrightUrl={'https://snek.at'} />
     </>
