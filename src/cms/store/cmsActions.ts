@@ -1,10 +1,65 @@
-import {DropAPI} from '@API'
-import {DropAPIReferences} from '@API'
+/**
+ * @license
+ * Copyright Nico Schett. All Rights Reserved.
+ *
+ * Use of this source code is governed by an EUPL-1.2 license that can be found
+ * in the LICENSE file at https://snek.at/license
+ */
 import {createAction, createAsyncThunk} from '@reduxjs/toolkit'
+
+import {DropAPI, BridgeSession} from '@cms/api'
+import {DropAPIReferences} from '@cms/api'
 
 import {RootState} from '@store/store'
 
 import {CMSBlock, CMSField} from './types'
+
+export const login = createAsyncThunk(
+  'cms/login',
+  async (
+    args: {
+      username: string
+      password: string
+    },
+    thunkAPI
+  ) => {
+    const {username, password} = args
+
+    try {
+      console.log('session begin with', username, password)
+      const session = await BridgeSession.begin({username, password})
+
+      if (!session) {
+        throw new Error('Starting session failed')
+      }
+
+      return session
+    } catch (err) {
+      // Use `err.response.data` as `action.payload` for a `rejected` action,
+      // by explicitly returning it using the `rejectWithValue()` utility
+      return thunkAPI.rejectWithValue(err.response.data)
+    }
+  }
+)
+
+export const logout = createAsyncThunk('cms/logout', async (_, thunkAPI) => {
+  try {
+    const session = await BridgeSession.begin({
+      username: 'cisco',
+      password: 'ciscocisco'
+    })
+
+    if (!session) {
+      throw new Error('Resetting session failed')
+    }
+
+    return session
+  } catch (err) {
+    // Use `err.response.data` as `action.payload` for a `rejected` action,
+    // by explicitly returning it using the `rejectWithValue()` utility
+    return thunkAPI.rejectWithValue(err.response.data)
+  }
+})
 
 export const toggleMenu = createAction<boolean>('cms/toggleMenu')
 

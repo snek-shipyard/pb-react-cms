@@ -1,6 +1,13 @@
+/**
+ * @license
+ * Copyright Nico Schett. All Rights Reserved.
+ *
+ * Use of this source code is governed by an EUPL-1.2 license that can be found
+ * in the LICENSE file at https://snek.at/license
+ */
 import {connect} from 'react-redux'
 
-import EditableRichTextField from '@cms/components/RichTextField'
+import {RichTextField} from '@cms/components'
 import {updatePageContent} from '@cms/store/cmsActions'
 import {CMSBlock} from '@cms/store/types'
 
@@ -17,4 +24,4 @@ const mapDispatchToProps = (dispatch: AppDispatch) => ({
 export const CMSRichTextField = connect(
   mapStateToProps,
   mapDispatchToProps
-)(EditableRichTextField)
+)(RichTextField)

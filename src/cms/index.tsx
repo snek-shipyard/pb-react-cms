@@ -1,3 +1,10 @@
+/**
+ * @license
+ * Copyright Nico Schett. All Rights Reserved.
+ *
+ * Use of this source code is governed by an EUPL-1.2 license that can be found
+ * in the LICENSE file at https://snek.at/license
+ */
 import {connect} from 'react-redux'
 
 import {toggleMenu} from '@cms/store/cmsActions'
@@ -20,7 +27,8 @@ const CMSComponent: React.FC<CMSProps> = props => {
         src="https://avatars.githubusercontent.com/u/55870326?s=200&v=4"
         data-mdb-toggle="popover"
         title="Edit with snek"
-        onClick={() => props.toggleMenu(true)}></img>
+        onClick={() => props.toggleMenu(true)}
+      />
     </>
   )
 }
@@ -31,7 +39,6 @@ const mapStateToProps = ({cms}: RootState) => ({
 
 const mapDispatchToProps = (dispatch: AppDispatch) => ({
   toggleMenu: (state: boolean) => dispatch(toggleMenu(state))
-  //   remove: () => dispatch(decrement)
 })
 
 export const CMSWrapper = connect(

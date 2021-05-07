@@ -1,3 +1,10 @@
+/**
+ * @license
+ * Copyright Nico Schett. All Rights Reserved.
+ *
+ * Use of this source code is governed by an EUPL-1.2 license that can be found
+ * in the LICENSE file at https://snek.at/license
+ */
 import {
   MDBBtn,
   MDBModal,
@@ -12,6 +19,7 @@ import {useEffect} from 'react'
 
 import {CMSMenuState} from '@cms/store/types'
 
+// import LoginForm from '../Login'
 // import {useState} from 'react'
 import './cmsmenu.scss'
 
@@ -58,29 +66,31 @@ const CMSMenu = ({
           <MDBModalContent>
             <MDBModalHeader>
               <MDBModalTitle>Jaen</MDBModalTitle>
-              <MDBBtn
-                className="btn-close"
-                color="none"
-                onClick={toggleShow}></MDBBtn>
+              <MDBBtn className="btn-close" color="none" onClick={toggleShow} />
             </MDBModalHeader>
-            <MDBModalBody>{JSON.stringify(index)}</MDBModalBody>
 
-            <MDBModalFooter>
-              {!editingMode ? (
-                <MDBBtn color="info" onClick={() => setEditingMode(true)}>
-                  edit
-                </MDBBtn>
-              ) : (
-                <>
-                  <MDBBtn color="warning" onClick={() => setEditingMode(false)}>
-                    stop
+            <>
+              <MDBModalBody>{JSON.stringify(index)}</MDBModalBody>
+
+              <MDBModalFooter>
+                {!editingMode ? (
+                  <MDBBtn color="info" onClick={() => setEditingMode(true)}>
+                    edit
                   </MDBBtn>
-                  <MDBBtn color="success" onClick={() => publish()}>
-                    publish
-                  </MDBBtn>
-                </>
-              )}
-            </MDBModalFooter>
+                ) : (
+                  <>
+                    <MDBBtn
+                      color="warning"
+                      onClick={() => setEditingMode(false)}>
+                      stop
+                    </MDBBtn>
+                    <MDBBtn color="success" onClick={() => publish()}>
+                      publish
+                    </MDBBtn>
+                  </>
+                )}
+              </MDBModalFooter>
+            </>
           </MDBModalContent>
         </MDBModalDialog>
       </MDBModal>

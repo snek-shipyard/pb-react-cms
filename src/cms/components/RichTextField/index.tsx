@@ -1,3 +1,10 @@
+/**
+ * @license
+ * Copyright Nico Schett. All Rights Reserved.
+ *
+ * Use of this source code is governed by an EUPL-1.2 license that can be found
+ * in the LICENSE file at https://snek.at/license
+ */
 import React from 'react'
 
 import SidebarEditor from '@cms/components/Editor'
@@ -11,17 +18,12 @@ type SubelementProps = React.DetailedHTMLProps<
 >
 interface Props extends SubelementProps, CMSComponentProps {
   updateContent: (element: CMSBlock) => void
-  editable?: boolean
 }
 
 const EditableRichTextField = ({updateContent, ...props}: Props) => {
   const {editableOptions, content, editable, ...subProps} = props
 
   const onUpdateContent = (content: string) => {
-    // const block = JSON.stringify([
-    //   {type: bifrostOptions.blockTypeName, value: content}
-    // ])
-
     const {pageId, pageName, fieldName, block} = editableOptions
 
     if (block) {

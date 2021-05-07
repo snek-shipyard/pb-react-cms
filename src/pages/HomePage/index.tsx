@@ -23,6 +23,7 @@ const HomePage = ({pages, id, name, loadPage}: Props): JSX.Element => {
   return (
     <>
       <Navbar />
+
       <div style={{margin: 100}}>
         <CMSRichTextField
           content={pageContent?.body[0].value}
