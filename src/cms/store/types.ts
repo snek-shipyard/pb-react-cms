@@ -42,6 +42,7 @@ export type CMSMenuState = {
 }
 
 export type CMSState = {
+  authenticated: boolean
   editingMode: boolean
   showMenu: boolean
   menu: CMSMenuState

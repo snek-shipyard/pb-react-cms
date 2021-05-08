@@ -19,13 +19,16 @@ import {useEffect} from 'react'
 
 import {CMSMenuState} from '@cms/store/types'
 
+import LoginForm from '../Login'
 // import LoginForm from '../Login'
 // import {useState} from 'react'
 import './cmsmenu.scss'
 
 interface Props extends CMSMenuState {
+  authenticated: boolean
   showMenu: boolean
   editingMode: boolean
+  login: (username: string, password: string) => void
   publish: () => void
   loadIndex: (checksum?: string) => void
   toggleMenu: (state: boolean) => void
@@ -38,9 +41,11 @@ interface Props extends CMSMenuState {
 }
 
 const CMSMenu = ({
+  authenticated,
   showMenu,
   editingMode,
   index,
+  login,
   publish,
   loadIndex,
   setEditingMode,
@@ -49,9 +54,12 @@ const CMSMenu = ({
   const toggleShow = () => toggleMenu(!showMenu)
 
   useEffect(() => {
-    setInterval(() => {
+    if (authenticated) {
       loadIndex(index?.checksum)
-    }, 1000 * 60 * 2)
+      setInterval(() => {
+        loadIndex(index?.checksum)
+      }, 1000 * 60 * 2)
+    }
   }, [index?.checksum])
 
   return (
@@ -68,29 +76,32 @@ const CMSMenu = ({
               <MDBModalTitle>Jaen</MDBModalTitle>
               <MDBBtn className="btn-close" color="none" onClick={toggleShow} />
             </MDBModalHeader>
+            {authenticated ? (
+              <>
+                <MDBModalBody>{JSON.stringify(index)}</MDBModalBody>
 
-            <>
-              <MDBModalBody>{JSON.stringify(index)}</MDBModalBody>
-
-              <MDBModalFooter>
-                {!editingMode ? (
-                  <MDBBtn color="info" onClick={() => setEditingMode(true)}>
-                    edit
-                  </MDBBtn>
-                ) : (
-                  <>
-                    <MDBBtn
-                      color="warning"
-                      onClick={() => setEditingMode(false)}>
-                      stop
+                <MDBModalFooter>
+                  {!editingMode ? (
+                    <MDBBtn color="info" onClick={() => setEditingMode(true)}>
+                      edit
                     </MDBBtn>
-                    <MDBBtn color="success" onClick={() => publish()}>
-                      publish
-                    </MDBBtn>
-                  </>
-                )}
-              </MDBModalFooter>
-            </>
+                  ) : (
+                    <>
+                      <MDBBtn
+                        color="warning"
+                        onClick={() => setEditingMode(false)}>
+                        stop
+                      </MDBBtn>
+                      <MDBBtn color="success" onClick={() => publish()}>
+                        publish
+                      </MDBBtn>
+                    </>
+                  )}
+                </MDBModalFooter>
+              </>
+            ) : (
+              <LoginForm onSubmit={login} />
+            )}
           </MDBModalContent>
         </MDBModalDialog>
       </MDBModal>

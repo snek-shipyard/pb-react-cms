@@ -13,11 +13,13 @@ import {
   publishPageContent,
   updatePageContent,
   loadIndex,
-  toggleMenu
+  toggleMenu,
+  login
 } from './cmsActions'
 import {CMSState} from './types'
 
 const initialState: CMSState = {
+  authenticated: false,
   editingMode: false,
   showMenu: false,
   menu: {},
@@ -25,6 +27,7 @@ const initialState: CMSState = {
 }
 
 export const cmsReducer = createReducer(initialState, {
+  [login.fulfilled.type]: (state, _action) => void (state.authenticated = true),
   [toggleMenu.type]: (state, action) => void (state.showMenu = action.payload),
   [setEditingMode.type]: (state, action) =>
     void (state.editingMode = action.payload),
