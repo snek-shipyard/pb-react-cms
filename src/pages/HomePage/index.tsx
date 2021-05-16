@@ -24,8 +24,9 @@ const HomePage = ({pages, id, name, loadPage}: Props): JSX.Element => {
     <>
       <Navbar />
 
-      <div style={{margin: 100}}>
+      <div className="container pt-5">
         <CMSRichTextField
+          className="text-center pt-4"
           content={pageContent?.body[0].value}
           editableOptions={{
             pageId: id,
@@ -39,6 +40,7 @@ const HomePage = ({pages, id, name, loadPage}: Props): JSX.Element => {
           }}
         />
         <CMSTextField
+          className="text-center pt-5"
           content={pageContent?.body[1].value}
           editableOptions={{
             pageId: id,
@@ -51,7 +53,7 @@ const HomePage = ({pages, id, name, loadPage}: Props): JSX.Element => {
             }
           }}
         />
-        <CMSTextField
+        {/* <CMSTextField
           content={pageContent?.body[2].value}
           editableOptions={{
             pageId: id,
@@ -63,10 +65,13 @@ const HomePage = ({pages, id, name, loadPage}: Props): JSX.Element => {
               type: 'heading'
             }
           }}
-        />
+        /> */}
       </div>
 
-      <Footer copyrightText={'snek'} copyrightUrl={'https://snek.at'} />
+      <Footer
+        copyrightText={'CC'}
+        copyrightUrl={'mailto:admin@tuwien.club'}
+      />
     </>
   )
 }

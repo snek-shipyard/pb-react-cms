@@ -1,0 +1,39 @@
+ .nav-logo{
+    width: 50px;
+  }
+
+.navbar-main {
+    background: #006699;
+}
+
+.nav-item {
+    letter-spacing: 0.15em;
+    border-radius: 5px;
+}
+
+.navbar .active {
+    background: #00537c;
+}
+
+.navbar.navbar-dark .breadcrumb .nav-item.active>.nav-link, .navbar.navbar-dark .navbar-nav .nav-item.active>.nav-link{
+    background-color: transparent;
+}
+
+.nav-item {
+    overflow: hidden;
+    /*border: solid white 1px;*/
+}
+
+/*
+.navbar-brand {
+    transform: scale(1);
+    transition: transform 0.5s ease-in-out;
+}
+.navbar-brand:hover {
+    transform: scale(1.1);
+}
+*/
+
+.card-header a{
+    color: #006699;
+}

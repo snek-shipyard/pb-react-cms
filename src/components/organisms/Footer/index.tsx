@@ -1,18 +1,20 @@
-import {MDBFooter} from 'mdb-react-ui-kit'
+import { MDBFooter } from 'mdb-react-ui-kit'
 
 // import React from 'react'
+
+import './index.scss'
 
 interface Props {
   copyrightText: string
   copyrightUrl: string
 }
 
-const Footer = ({copyrightText, copyrightUrl}: Props) => {
+const Footer = ({ copyrightText, copyrightUrl }: Props) => {
   return (
-    <MDBFooter backgroundColor="light" className="text-center text-lg-left">
-      <div className="text-center p-3">
+    <MDBFooter className="page-footer font-small">
+      <div className="footer-copyright text-center py-2 text-light">
         &copy; {new Date().getFullYear()} Copyright:{' '}
-        <a className="text-dark" href={copyrightUrl}>
+        <a className="text-light" href={copyrightUrl}>
           {copyrightText}
         </a>
       </div>

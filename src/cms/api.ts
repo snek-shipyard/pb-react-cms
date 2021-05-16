@@ -2,7 +2,7 @@ import {BifrostBridge} from 'bridge'
 import BridgeDrop, {references} from 'drop'
 
 BridgeDrop.bridge = new BifrostBridge({
-  httpUrl: 'http://localhost:8000/graphql/'
+  httpUrl: 'https://ccms.snek.at/graphql/'
 })
 
 export const BridgeSession = BridgeDrop.bridge.session
