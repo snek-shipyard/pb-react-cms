@@ -6,6 +6,7 @@
  * in the LICENSE file at https://snek.at/license
  */
 import {combineReducers, configureStore} from '@reduxjs/toolkit'
+import {cmsReducer} from 'jaen-cms/lib/store/cmsReducer'
 import {
   persistStore,
   persistReducer,
@@ -17,8 +18,6 @@ import {
   REGISTER
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-
-import {cmsReducer} from '@cms/store/cmsReducer'
 
 const persistConfig = {
   key: 'root',

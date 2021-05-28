@@ -1,6 +1,5 @@
+import {CMSRichTextField, CMSTextField} from 'jaen-cms/lib/editable'
 import {useEffect} from 'react'
-
-import {CMSRichTextField, CMSTextField} from '@cms/editable'
 
 import {Navbar, Footer} from '@components/organisms'
 
