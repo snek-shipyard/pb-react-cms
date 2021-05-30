@@ -25,20 +25,6 @@ const HomePage = ({pages, id, name, loadPage}: Props): JSX.Element => {
       <Navbar />
 
       <div className="container pt-5">
-        <CMSRichTextField
-          className="text-center pt-4"
-          content={pageContent?.body[0].value}
-          editableOptions={{
-            pageId: id,
-            pageName: name,
-            fieldName: 'body',
-            block: {
-              id: 1,
-              position: 0,
-              type: 'subheading'
-            }
-          }}
-        />
         <CMSTextField
           className="text-center pt-5"
           content={pageContent?.body[1].value}
@@ -48,8 +34,22 @@ const HomePage = ({pages, id, name, loadPage}: Props): JSX.Element => {
             fieldName: 'body',
             block: {
               id: 1,
-              position: 1,
+              position: 0,
               type: 'heading'
+            }
+          }}
+        />
+        <CMSRichTextField
+          className="text-center pt-4"
+          content={pageContent?.body[0].value}
+          editableOptions={{
+            pageId: id,
+            pageName: name,
+            fieldName: 'body',
+            block: {
+              id: 1,
+              position: 1,
+              type: 'subheading'
             }
           }}
         />

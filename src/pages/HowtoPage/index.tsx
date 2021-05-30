@@ -6,7 +6,7 @@
 //
 import {useEffect} from 'react'
 
-import {CMSRichTextField} from '@cms/containers/CMSRichTextField'
+import {CMSRichTextField, CMSTextField} from '@cms/editable'
 
 import {Navbar} from '@components/organisms'
 import Footer from '@components/organisms/Footer'
@@ -34,8 +34,9 @@ const HowtoPage = ({pages, id, name, loadPage}: Props): JSX.Element => {
     <>
       <Navbar />
       <div style={{margin: 100}}>
-        <CMSRichTextField
-          className="text-center pt-4"
+
+        <CMSTextField
+          className="text-center pt-5"
           content={pageContent?.body[0].value}
           editableOptions={{
             pageId: id,
@@ -44,6 +45,21 @@ const HowtoPage = ({pages, id, name, loadPage}: Props): JSX.Element => {
             block: {
               id: 1,
               position: 0,
+              type: 'heading'
+            }
+          }}
+          
+        />
+        <CMSRichTextField
+          className="text-center pt-4"
+          content={pageContent?.body[1].value}
+          editableOptions={{
+            pageId: id,
+            pageName: name,
+            fieldName: 'body',
+            block: {
+              id: 1,
+              position: 1,
               type: 'subheading'
             }
           }}
