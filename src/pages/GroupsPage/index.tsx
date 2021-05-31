@@ -6,13 +6,14 @@
 //
 import {useEffect} from 'react'
 
-import {CMSRichTextField, CMSTextField} from '@cms/editable'
+import {CMSRichTextField} from '@cms/editable'
 
 import {Navbar} from '@components/organisms'
 import Footer from '@components/organisms/Footer'
 
 import {RootState} from '@store/store'
 
+import "./index.scss"
 //
 
 interface Props {
@@ -29,41 +30,28 @@ const GroupsPage = ({pages, id, name, loadPage}: Props): JSX.Element => {
   }, [])
   const CMSPageId = `${id}_${name}`
   const pageContent = pages[CMSPageId]?.serverContent
+  console.log("fakfak",pages[CMSPageId])
 
   return (
     <>
       <Navbar />
-      <div style={{margin: 100}}>
-      <CMSTextField
-          className="text-center pt-5"
-          content={pageContent?.body[0].value}
-          editableOptions={{
-            pageId: id,
-            pageName: name,
-            fieldName: 'body',
-            block: {
-              id: 1,
-              position: 0,
-              type: 'heading'
-            }
-          }}
-        />
-      <CMSRichTextField
-          className="text-center pt-4"
-          content={pageContent?.body[1].value}
-          editableOptions={{
-            pageId: id,
-            pageName: name,
-            fieldName: 'body',
-            block: {
-              id: 1,
-              position: 1,
-              type: 'subheading'
-            }
-          }}
-        />
+      <div className="container pt-5">
+        <div className="container">
+          <CMSRichTextField
+            content={pageContent?.body[0].value}
+            editableOptions={{
+              pageId: id,
+              pageName: name,
+              fieldName: 'body',
+              block: {
+                id: 1,
+                position: 0,
+                type: 'subheading'
+              }
+            }}
+          />
+        </div>
       </div>
-
       <Footer
         copyrightText={'CC'}
         copyrightUrl={'mailto:admin@tuwien.club'}

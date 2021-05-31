@@ -20,6 +20,8 @@ import {useState} from 'react'
 
 import './index.scss'
 
+import Logo from '@common/logo.svg';
+
 interface Props {
   logoUrl?: string
   logoAlt?: string
@@ -27,7 +29,7 @@ interface Props {
 }
 
 const Navbar = ({
-  logoUrl = 'https://www.tuwien.club/images/logo.png',
+  logoUrl = Logo,
   logoAlt = 'tuwien club'
 }: Props) => {
 
@@ -54,29 +56,29 @@ const Navbar = ({
           <MDBCollapse navbar show={showNavbar}>
             <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
 
-              <MDBNavbarItem className='ml-3 font-weight-bold text-uppercase'>
+              <MDBNavbarItem className='ms-2 font-weight-bold text-uppercase'>
                 <MDBNavbarLink active={activePath === '/'} aria-current='page' href='/'>
                   Home
                 </MDBNavbarLink>
               </MDBNavbarItem>
 
-              <MDBNavbarItem className='ml-3 font-weight-bold text-uppercase'>
-                <MDBNavbarLink active={activePath === '/groups'} href="groups">Groups</MDBNavbarLink>
+              <MDBNavbarItem className='ms-2 font-weight-bold text-uppercase'>
+                <MDBNavbarLink active={activePath === '/groups'} href="groups">Gruppen</MDBNavbarLink>
               </MDBNavbarItem>
 
-              <MDBNavbarItem className='ml-3 font-weight-bold text-uppercase'>
+              <MDBNavbarItem className='ms-2 font-weight-bold text-uppercase'>
                 <MDBNavbarLink active={activePath === '/faq'} href="faq">FAQ</MDBNavbarLink>
               </MDBNavbarItem>
 
-              <MDBNavbarItem className='ml-3 font-weight-bold text-uppercase'>
+              <MDBNavbarItem className='ms-2 font-weight-bold text-uppercase'>
                 <MDBNavbarLink active={activePath === '/rules'} href="rules">Regeln</MDBNavbarLink>
               </MDBNavbarItem>
 
-              <MDBNavbarItem className='ml-3 font-weight-bold text-uppercase'>
+              <MDBNavbarItem className='ms-2 font-weight-bold text-uppercase'>
                 <MDBNavbarLink active={activePath === '/contact'} href="contact">Kontakt</MDBNavbarLink>
               </MDBNavbarItem>
 
-              <MDBNavbarItem className='ml-3 font-weight-bold text-uppercase'>
+              <MDBNavbarItem className='ms-2 font-weight-bold text-uppercase'>
                 <MDBNavbarLink active={activePath === '/howto'} href="howto">How-To</MDBNavbarLink>
               </MDBNavbarItem>
 

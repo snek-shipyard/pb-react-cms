@@ -6,6 +6,8 @@ import {Navbar, Footer} from '@components/organisms'
 
 import {RootState} from '@store/store'
 
+import "./index.scss"
+
 interface Props {
   loadPage: (id: string) => void
   id: string
@@ -23,36 +25,38 @@ const HomePage = ({pages, id, name, loadPage}: Props): JSX.Element => {
   return (
     <>
       <Navbar />
-
       <div className="container pt-5">
-        <CMSTextField
-          className="text-center pt-5"
-          content={pageContent?.body[1].value}
-          editableOptions={{
-            pageId: id,
-            pageName: name,
-            fieldName: 'body',
-            block: {
-              id: 1,
-              position: 0,
-              type: 'heading'
-            }
-          }}
-        />
-        <CMSRichTextField
-          className="text-center pt-4"
-          content={pageContent?.body[0].value}
-          editableOptions={{
-            pageId: id,
-            pageName: name,
-            fieldName: 'body',
-            block: {
-              id: 1,
-              position: 1,
-              type: 'subheading'
-            }
-          }}
-        />
+        <h1 className="cms-center mt-5">
+          <CMSTextField
+            content={pageContent?.body[0].value}
+            editableOptions={{
+              pageId: id,
+              pageName: name,
+              fieldName: 'body',
+              block: {
+                id: 1,
+                position: 0,
+                type: 'heading'
+              }
+            }}
+          />
+        </h1>
+        <div className="cms-center mt-5">
+          <CMSRichTextField
+            content={pageContent?.body[1].value}
+            editableOptions={{
+              pageId: id,
+              pageName: name,
+              fieldName: 'body',
+              block: {
+                id: 1,
+                position: 1,
+                type: 'subheading'
+              }
+            }}
+          />
+        </div>
+
         {/* <CMSTextField
           content={pageContent?.body[2].value}
           editableOptions={{

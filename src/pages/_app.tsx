@@ -25,7 +25,7 @@ const App = (): JSX.Element => {
         <Route
           exact
           path="/groups"
-          render={props => <GroupsPage {...props} id={'3'} name={'GroupsPage'} />}
+          render={props => <GroupsPage {...props} id={'8'} name={'StudyIndex'} />}
         />
         <Route
           exact
@@ -35,17 +35,17 @@ const App = (): JSX.Element => {
         <Route
           exact
           path="/rules"
-          render={props => <RulesPage {...props} id={'8'} name={'RulesPage'} />}
+          render={props => <RulesPage {...props} id={'7'} name={'RulesPage'} />}
         />
         <Route
           exact
           path="/contact"
-          render={props => <ContactPage {...props} id={'5'} name={'ContactPage'} />}
+          render={props => <ContactPage {...props} id={'4'} name={'ContactPage'} />}
         />
         <Route
           exact
           path="/howto"
-          render={props => <HowtoPage {...props} id={'7'} name={'HowtoPage'} />}
+          render={props => <HowtoPage {...props} id={'5'} name={'HowtoPage'} />}
         />
       </Router>
     </div>

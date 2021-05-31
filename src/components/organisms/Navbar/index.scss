@@ -24,6 +24,31 @@
     /*border: solid white 1px;*/
 }
 
+.navbar-dark{
+    .navbar-toggler{
+        color: rgba(255, 255, 255, 0.8) !important;
+        font-size: 1.7rem;
+    }
+
+    .navbar-toggler:hover{
+        color: rgba(255, 255, 255, 1) !important;
+    }
+
+    .navbar-nav{
+        .nav-link{
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+
+        .nav-link:hover{
+            color: rgba(255, 255, 255, 1) !important;
+        }
+
+        .active{
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+    }
+}
+
 /*
 .navbar-brand {
     transform: scale(1);
