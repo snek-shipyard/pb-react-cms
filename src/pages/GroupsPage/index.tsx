@@ -32,13 +32,13 @@ const GroupsPage = ({pages, id, name, loadPage}: Props): JSX.Element => {
   }, [])
   const CMSPageId = `${id}_${name}`
   const pageContent = pages[CMSPageId]?.serverContent
-  console.log("fakfak",pageContent.studies[0].study)
-  const [showShow, setShowShow] = useState('collapse1');
+  
+  const [showShow, setShowShow] = useState('collapse0');
+  const studies = pageContent.studies.reduce((s:any, t:any) => {
+    s[t.study.studyType] = [...s[t.study.studyType] || [], t]
+    return s
+  }, {})
 
-  const studies = pageContent.studies
-  const studietypes = studies.reduce((acc:Array<number> , curVal:any) => acc.concat([curVal.studyType, curVal.studyType]),[]);
-  //const studiess = [[1, 2], [3, 4], [5, 6]].reduce((acc, curVal) => acc.concat(curVal), []);
-  console.log("fakfak",studietypes)
   return (
     <>
       <Navbar />
@@ -70,21 +70,25 @@ const GroupsPage = ({pages, id, name, loadPage}: Props): JSX.Element => {
       </MDBContainer>
       <MDBContainer>
         <MDBContainer className='accordion mt-5'>
-        {studies.map((item:any, index:number) =>
+        {Object.keys(studies).map((studytype:any, index:number) =>
           <>
             <MDBCard className='accordion-item mt-3'>
               <MDBCardHeader
                   className='accordion-header d-flex justify-content-between'
                   onClick={() => showShow === 'collapse'+index ? setShowShow('collapse') : setShowShow('collapse'+index)}
               >
-                {item.study.studyType}
+                {studytype}
                 <MDBIcon
                   icon={showShow === 'collapse'+index ? 'angle-up' : 'angle-down'}
                 />
               </MDBCardHeader>
               <MDBCollapse show={showShow === 'collapse'+index}>
                 <MDBCardBody className='accordion-body'>
-                  <a href={window.location.href +"/"+item.study.studyName}>{item.study.studyName}</a>
+                  {studies[studytype].map((studypage:any) =>
+                    <>
+                      <a href={window.location.href +"/"+studypage.slug}>{studypage.study.studyName}</a>
+                    </>
+                  )}
                 </MDBCardBody>
               </MDBCollapse>
             </MDBCard>
