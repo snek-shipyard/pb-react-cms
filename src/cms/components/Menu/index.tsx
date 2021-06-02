@@ -17,7 +17,7 @@ import {
 } from 'mdb-react-ui-kit'
 import {useEffect} from 'react'
 
-import {CMSMenuState} from '@cms/store/types'
+import {CMSMenuState} from 'jaen-cms/lib/store/types'
 
 import LoginForm from '../Login'
 // import LoginForm from '../Login'

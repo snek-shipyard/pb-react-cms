@@ -1,4 +1,4 @@
-import {BifrostBridge} from 'bridge'
+import {BifrostBridge} from '@schettnet/bridge'
 import BridgeDrop, {references} from 'drop'
 
 BridgeDrop.bridge = new BifrostBridge({

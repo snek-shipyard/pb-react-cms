@@ -7,8 +7,8 @@
  */
 import React from 'react'
 
-import SidebarEditor from '@cms/components/Editor'
-import {CMSBlock, CMSField} from '@cms/store/types'
+import SidebarEditor from 'jaen-cms/lib/components/Editor'
+import {CMSBlock, CMSField} from 'jaen-cms/lib/store/types'
 
 import {CMSComponentProps} from '../types'
 

@@ -18,7 +18,7 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
-import {cmsReducer} from '@cms/store/cmsReducer'
+import {cmsReducer} from 'jaen-cms/lib/store/cmsReducer'
 
 const persistConfig = {
   key: 'root',

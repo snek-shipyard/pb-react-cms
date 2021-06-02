@@ -7,8 +7,8 @@
  */
 import {createAction, createAsyncThunk} from '@reduxjs/toolkit'
 
-import {DropAPI, BridgeSession} from '@cms/api'
-import {DropAPIReferences} from '@cms/api'
+import {DropAPI, BridgeSession} from 'jaen-cms/lib/api'
+import {DropAPIReferences} from 'jaen-cms/lib/api'
 
 import {RootState} from '@store/store'
 

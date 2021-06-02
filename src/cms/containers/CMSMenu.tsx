@@ -7,14 +7,14 @@
  */
 import {connect} from 'react-redux'
 
-import CMSMenu from '@cms/components/Menu'
+import CMSMenu from 'jaen-cms/lib/components/Menu'
 import {
   loadIndex,
   login,
   publishPageContent,
   setEditingMode,
   toggleMenu
-} from '@cms/store/cmsActions'
+} from 'jaen-cms/lib/store/cmsActions'
 
 import {AppDispatch, RootState} from '@store/store'
 

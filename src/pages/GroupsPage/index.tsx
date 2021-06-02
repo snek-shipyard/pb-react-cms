@@ -6,7 +6,7 @@
 //
 import {useEffect, useState} from 'react'
 
-import {CMSRichTextField} from '@cms/editable'
+import {CMSRichTextField} from 'jaen-cms/lib/editable'
 
 import {Navbar} from '@components/organisms'
 import Footer from '@components/organisms/Footer'
@@ -34,7 +34,7 @@ const GroupsPage = ({pages, id, name, loadPage}: Props): JSX.Element => {
   const pageContent = pages[CMSPageId]?.serverContent
   
   const [showShow, setShowShow] = useState('collapse0');
-  const studies = pageContent.studies.reduce((s:any, t:any) => {
+  const studies = pageContent?.studies.reduce((s:any, t:any) => {
     s[t.study.studyType] = [...s[t.study.studyType] || [], t]
     return s
   }, {})
@@ -70,30 +70,33 @@ const GroupsPage = ({pages, id, name, loadPage}: Props): JSX.Element => {
       </MDBContainer>
       <MDBContainer>
         <MDBContainer className='accordion mt-5'>
-        {Object.keys(studies).map((studytype:any, index:number) =>
-          <>
-            <MDBCard className='accordion-item mt-3'>
-              <MDBCardHeader
-                  className='accordion-header d-flex justify-content-between'
-                  onClick={() => showShow === 'collapse'+index ? setShowShow('collapse') : setShowShow('collapse'+index)}
-              >
-                {studytype}
-                <MDBIcon
-                  icon={showShow === 'collapse'+index ? 'angle-up' : 'angle-down'}
-                />
-              </MDBCardHeader>
-              <MDBCollapse show={showShow === 'collapse'+index}>
-                <MDBCardBody className='accordion-body'>
-                  {studies[studytype].map((studypage:any) =>
-                    <>
-                      <a href={window.location.href +"/"+studypage.slug}>{studypage.study.studyName}</a>
-                    </>
-                  )}
-                </MDBCardBody>
-              </MDBCollapse>
-            </MDBCard>
-          </>
-        )}
+        {studies 
+          ? Object.keys(studies).map((studytype:any, index:number) =>
+            <>
+              <MDBCard className='accordion-item mt-3'>
+                <MDBCardHeader
+                    className='accordion-header d-flex justify-content-between'
+                    onClick={() => showShow === 'collapse'+index ? setShowShow('collapse') : setShowShow('collapse'+index)}
+                >
+                  {studytype}
+                  <MDBIcon
+                    icon={showShow === 'collapse'+index ? 'angle-up' : 'angle-down'}
+                  />
+                </MDBCardHeader>
+                <MDBCollapse show={showShow === 'collapse'+index}>
+                  <MDBCardBody className='accordion-body'>
+                    {studies[studytype].map((studypage:any) =>
+                      <>
+                        <a href={window.location.href +"/"+studypage.slug}>{studypage.study.studyName}</a>
+                      </>
+                    )}
+                  </MDBCardBody>
+                </MDBCollapse>
+              </MDBCard>
+            </>
+          ) 
+          : <></>
+        }
         </MDBContainer>
       </MDBContainer>
       <Footer

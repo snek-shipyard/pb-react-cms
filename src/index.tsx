@@ -4,14 +4,14 @@ import {Provider} from 'react-redux'
 
 import {store, PersistGate, persistor} from '@store/store'
 
-import {CMSWrapper} from './cms'
+import {CMSWrapper} from 'jaen-cms/lib/index'
 import App from './pages/_app'
 
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
       <PersistGate loading={null} persistor={persistor}>
-        <CMSWrapper>
+        <CMSWrapper bifrostUrls={{httpUrl: 'https://ccms.snek.at/graphql'}}>
           <App />
         </CMSWrapper>
       </PersistGate>

@@ -7,7 +7,7 @@
  */
 import {connect} from 'react-redux'
 
-import {toggleMenu} from '@cms/store/cmsActions'
+import {toggleMenu} from 'jaen-cms/lib/store/cmsActions'
 
 import {AppDispatch, RootState} from '@store/store'
 

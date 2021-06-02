@@ -1,14 +1,25 @@
 {
-    "compilerOptions": {
-      "baseUrl": ".",
-      "paths": {
-        "@cms/*": ["./src/cms/*"],
-        "@components/*": ["./src/components/*"],
-        "@containers/*": ["./src/containers/*"],
-        "@common/*": ["./src/common/*"],
-        "@store/*": ["./src/store/*"],
-        "@API": ["./src/api"],
-        "@Types": ["./src/types"],
-      }
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@containers/*": [
+        "./src/containers/*"
+      ],
+      "@common/*": [
+        "./src/common/*"
+      ],
+      "@store/*": [
+        "./src/store/*"
+      ],
+      "@API": [
+        "./src/api"
+      ],
+      "@Types": [
+        "./src/types"
+      ],
     }
   }
+}

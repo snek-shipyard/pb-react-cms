@@ -14,6 +14,8 @@
     "draft-js-export-html": "^1.4.1",
     "draft-js-import-html": "^1.4.1",
     "drop": "file:drop-1.0.0.tgz",
+    "jaen-cms": "file:jaen-cms-1.0.0.tgz",
+    "immutable": "^4.0.0-rc.12",
     "mdb-react-ui-kit": "^1.0.0-beta4",
     "node-sass": "^5.0.0",
     "react": "^17.0.2",

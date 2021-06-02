@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 
-import {loadPageContent} from '@cms/store/cmsActions'
+import {loadPageContent} from 'jaen-cms/lib/store/cmsActions'
 
 import {AppDispatch, RootState} from '@store/store'
 

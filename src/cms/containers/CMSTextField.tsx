@@ -7,9 +7,9 @@
  */
 import {connect} from 'react-redux'
 
-import {TextField} from '@cms/components'
-import {updatePageContent} from '@cms/store/cmsActions'
-import {CMSBlock, CMSField} from '@cms/store/types'
+import {TextField} from 'jaen-cms/lib/components'
+import {updatePageContent} from 'jaen-cms/lib/store/cmsActions'
+import {CMSBlock, CMSField} from 'jaen-cms/lib/store/types'
 
 import {AppDispatch, RootState} from '@store/store'
 
