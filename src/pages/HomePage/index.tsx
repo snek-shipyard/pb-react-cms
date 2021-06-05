@@ -2,8 +2,6 @@ import {useEffect} from 'react'
 
 import {CMSRichTextField, CMSTextField} from 'jaen-cms/lib/editable'
 
-import {Navbar, Footer} from '@components/organisms'
-
 import {RootState} from '@store/store'
 
 import "./index.scss"
@@ -24,7 +22,6 @@ const HomePage = ({pages, id, name, loadPage}: Props): JSX.Element => {
 
   return (
     <>
-      <Navbar />
       <div className="container pt-5">
         <h1 className="cms-center mt-5">
           <CMSTextField
@@ -56,26 +53,7 @@ const HomePage = ({pages, id, name, loadPage}: Props): JSX.Element => {
             }}
           />
         </div>
-
-        {/* <CMSTextField
-          content={pageContent?.body[2].value}
-          editableOptions={{
-            pageId: id,
-            pageName: name,
-            fieldName: 'body',
-            block: {
-              id: 2,
-              position: 2,
-              type: 'heading'
-            }
-          }}
-        /> */}
       </div>
-
-      <Footer
-        copyrightText={'CC'}
-        copyrightUrl={'mailto:admin@tuwien.club'}
-      />
     </>
   )
 }

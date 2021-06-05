@@ -4,7 +4,7 @@ import {loadPageContent} from 'jaen-cms/lib/store/cmsActions'
 
 import {AppDispatch, RootState} from '@store/store'
 
-import GroupsPageComponent from '../pages/GroupsPage'
+import StudyIndexPageComponent from '../pages/StudyIndexPage'
 
 const mapStateToProps = ({cms}: RootState) => ({
   pages: cms.pages
@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch: AppDispatch) => ({
   loadPage: (id: string) => dispatch(loadPageContent({id}))
 })
 
-export const GroupsPageContainer = connect(
+export const StudyIndexPageContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(GroupsPageComponent)
+)(StudyIndexPageComponent)

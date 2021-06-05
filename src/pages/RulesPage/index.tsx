@@ -8,9 +8,6 @@ import {useEffect} from 'react'
 
 import {CMSRichTextField, CMSTextField} from 'jaen-cms/lib/editable'
 
-import {Navbar} from '@components/organisms'
-import Footer from '@components/organisms/Footer'
-
 import {RootState} from '@store/store'
 
 import "./index.scss"
@@ -32,8 +29,7 @@ const RulesPage = ({pages, id, name, loadPage}: Props): JSX.Element => {
   const pageContent = pages[CMSPageId]?.serverContent
 
   return (
-<>
-      <Navbar />
+    <>
       <div className="container pt-5">
         <h1 className="container">
           <CMSTextField
@@ -66,10 +62,6 @@ const RulesPage = ({pages, id, name, loadPage}: Props): JSX.Element => {
           />
         </div>
       </div>
-      <Footer
-        copyrightText={'CC'}
-        copyrightUrl={'mailto:admin@tuwien.club'}
-      />
     </>
   )
 }

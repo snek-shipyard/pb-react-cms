@@ -8,15 +8,13 @@ import {useEffect, useState} from 'react'
 
 import {CMSRichTextField} from 'jaen-cms/lib/editable'
 
-import {Navbar} from '@components/organisms'
-import Footer from '@components/organisms/Footer'
-
 import {RootState} from '@store/store'
 
 import "./index.scss"
 
 import { MDBIcon, MDBContainer, MDBCollapse, MDBCard, MDBCardBody, MDBCardHeader, MDBBreadcrumb, MDBBreadcrumbItem } from 'mdb-react-ui-kit';
 //
+
 
 interface Props {
   loadPage: (id: string) => void
@@ -25,7 +23,7 @@ interface Props {
   pages: RootState['cms']['pages']
 }
 
-const GroupsPage = ({pages, id, name, loadPage}: Props): JSX.Element => {
+const StudyIndexPage = ({pages, id, name, loadPage}: Props): JSX.Element => {
   useEffect(() => {
     console.log('reload')
     loadPage(id)
@@ -41,7 +39,6 @@ const GroupsPage = ({pages, id, name, loadPage}: Props): JSX.Element => {
 
   return (
     <>
-      <Navbar />
       <nav className='navbar navbar-expand-lg navbar-light bg-light'>
         <MDBContainer fluid>
           <MDBBreadcrumb>
@@ -87,7 +84,7 @@ const GroupsPage = ({pages, id, name, loadPage}: Props): JSX.Element => {
                   <MDBCardBody className='accordion-body'>
                     {studies[studytype].map((studypage:any) =>
                       <>
-                        <a href={window.location.href +"/"+studypage.slug}>{studypage.study.studyName}</a>
+                        <a href={window.location.href +"/"+studypage.id}>{studypage.study.studyName}</a>
                       </>
                     )}
                   </MDBCardBody>
@@ -99,12 +96,8 @@ const GroupsPage = ({pages, id, name, loadPage}: Props): JSX.Element => {
         }
         </MDBContainer>
       </MDBContainer>
-      <Footer
-        copyrightText={'CC'}
-        copyrightUrl={'mailto:admin@tuwien.club'}
-      />
     </>
   )
 }
 
-export default GroupsPage
+export default StudyIndexPage
